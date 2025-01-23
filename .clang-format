@@ -1,0 +1,6 @@
+# .clang-format
+---
+Language: Cpp
+BasedOnStyle: LLVM
+IndentWidth: 3
+UseTab: Never
