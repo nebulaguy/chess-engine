@@ -33,6 +33,7 @@ enum Squares
 // clang-format on
 
 /*
+not a file, similar concept for rest
 8   0 1 1 1 1 1 1 1
 7   0 1 1 1 1 1 1 1
 6   0 1 1 1 1 1 1 1
@@ -45,7 +46,10 @@ enum Squares
     a b c d e f g h
  */
 const uint64_t not_a_file = 18374403900871474942ULL;
+const uint64_t not_g_file = 13816973012072644543ULL;
 const uint64_t not_h_file = 9187201950435737471ULL;
+const uint64_t not_ab_file = 18229723555195321596ULL;
+const uint64_t not_gh_file = 4557430888798830399ULL;
 
 inline int GET_BIT(uint64_t bitboard, int square) {
    // return 0 if 0 or 1 if 2^square
@@ -63,7 +67,7 @@ inline void POP_BIT(uint64_t &bitboard, int square) {
 void print_bitboard(uint64_t bitboard);
 
 uint64_t init_pawn_moves(int square, int side);
-uint64_t init_horse_moves(int square);
+uint64_t init_knight_moves(int square);
 
 class Bitboard {
 
@@ -75,4 +79,5 @@ class Bitboard {
    uint64_t empty_squares;
 
    uint64_t pawn_moves[2][64];
+   uint64_t knight_moves[64];
 };

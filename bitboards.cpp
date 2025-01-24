@@ -26,6 +26,7 @@ Bitboard::Bitboard() {
    for (int i = 0; i < 64; i++) {
       pawn_moves[WHITE][i] = init_pawn_moves(i, WHITE);
       pawn_moves[BLACK][i] = init_pawn_moves(i, BLACK);
+      knight_moves[i] = init_knight_moves(i);
    }
 }
 
@@ -52,7 +53,36 @@ uint64_t init_pawn_moves(int square, int side) {
    return attack;
 }
 
-uint64_t init_horse_moves(int square);
+uint64_t init_knight_moves(int square) {
+   uint64_t bitboard = 0ULL;
+   uint64_t attack = 0ULL;
+   SET_BIT(bitboard, square);
+
+   // right-up
+   attack |= (bitboard >> 6) & not_ab_file;
+   // right-down
+   attack |= (bitboard << 10) & not_ab_file;
+
+   // down-right
+   attack |= (bitboard << 17) & not_a_file;
+   // down-left
+   attack |= (bitboard << 15) & not_h_file;
+
+   // left-up
+   attack |= (bitboard >> 10) & not_gh_file;
+   // left-down
+   attack |= (bitboard << 6) & not_gh_file;
+
+   // up-left
+   attack |= (bitboard >> 17) & not_h_file;
+
+   // up-right
+   attack |= (bitboard >> 15) & not_a_file;
+
+   SET_BIT(attack, square);
+
+   return attack;
+}
 void print_bitboard(uint64_t bitboard) {
 
    for (int rank = 0; rank < 8; rank++) {
@@ -63,7 +93,13 @@ void print_bitboard(uint64_t bitboard) {
          }
 
          int square = rank * 8 + file;
-         cout << " " << GET_BIT(bitboard, square);
+
+         int bit = GET_BIT(bitboard, square);
+         if (bit) {
+            cout << " " << bit;
+         } else {
+            cout << " " << ".";
+         }
       }
       cout << endl;
    }

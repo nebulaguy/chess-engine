@@ -34,5 +34,5 @@
 # VSCode
 .vscode
 .clang-format
-*.dYSM/
+*.dYSM/Contents
 
