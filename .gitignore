@@ -30,3 +30,8 @@
 *.exe
 *.out
 *.app
+
+# VSCode
+.vscode
+.clang-format
+.dYSM
