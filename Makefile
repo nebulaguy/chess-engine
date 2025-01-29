@@ -24,3 +24,7 @@ $(TARGET): $(OBJECTS)
 # Clean up compiled files
 clean:
 	rm -f $(OBJECTS) $(TARGET)
+
+# Run the executable
+run: $(TARGET)
+	./$(TARGET)

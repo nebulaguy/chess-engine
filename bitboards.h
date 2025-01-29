@@ -66,8 +66,9 @@ inline void POP_BIT(uint64_t &bitboard, int square) {
 
 void print_bitboard(uint64_t bitboard);
 
-uint64_t init_pawn_moves(int square, int side);
-uint64_t init_knight_moves(int square);
+uint64_t init_pawn_attacks(int square, int side);
+uint64_t init_knight_attacks(int square);
+uint64_t init_king_attacks(int square);
 
 class Bitboard {
 
@@ -78,6 +79,7 @@ class Bitboard {
    uint64_t filled_squares;
    uint64_t empty_squares;
 
-   uint64_t pawn_moves[2][64];
-   uint64_t knight_moves[64];
+   uint64_t pawn_attacks[2][64];
+   uint64_t knight_attacks[64];
+   uint64_t king_attacks[64];
 };

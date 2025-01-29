@@ -53,7 +53,8 @@ void print_numbers() {
 }
 
 int main() {
-
+   // Bitboard board;
+   print_bitboard(init_king_attacks(e2));
    // test_print();
    return 0;
 }
