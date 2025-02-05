@@ -69,6 +69,7 @@ void print_bitboard(uint64_t bitboard);
 uint64_t init_pawn_attacks(int square, int side);
 uint64_t init_knight_attacks(int square);
 uint64_t init_king_attacks(int square);
+uint64_t init_bishop_attacks(int square);
 
 class Bitboard {
 

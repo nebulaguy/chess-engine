@@ -114,6 +114,34 @@ uint64_t init_king_attacks(int square) {
    return attacks;
 }
 
+uint64_t init_bishop_attacks(int square) {
+   uint64_t bitboard = 0ULL;
+   uint64_t attacks = 0ULL;
+
+   int r, f;
+
+   int tr = square / 8;
+   int tf = square % 8;
+
+   for (r = tr + 1, f = tf + 1; r <= 6 && f <= 6; r++, f++) {
+      attacks |= 1ULL << (r * 8 + f);
+   }
+
+   for (r = tr - 1, f = tf - 1; r >= 1 && f >= 1; r--, f--) {
+      attacks |= 1ULL << (r * 8 + f);
+   }
+
+   for (r = tr - 1, f = tf + 1; r <= 6 && f <= 6; r--, f++) {
+      attacks |= 1ULL << (r * 8 + f);
+   }
+
+   for (r = tr + 1, f = tf - 1; r >= 1 && f >= 1; r++, f--) {
+      attacks |= 1ULL << (r * 8 + f);
+   }
+
+   return attacks;
+}
+
 void print_bitboard(uint64_t bitboard) {
 
    for (int rank = 0; rank < 8; rank++) {
